@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juliana Araujo — 2026 Goals</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0B0D12;
+      --bg2:       #111318;
+      --bg3:       #181B22;
+      --border:    rgba(255,255,255,0.07);
+      --text:      #E8EAF0;
+      --muted:     #6B7280;
+      --muted2:    #9CA3AF;
+
+      --g1: #F59E0B;
+      --g2: #22D3EE;
+      --g3: #F43F5E;
+      --g4: #34D399;
+
+      --g1-dim: rgba(245,158,11,0.08);
+      --g2-dim: rgba(34,211,238,0.08);
+      --g3-dim: rgba(244,63,94,0.08);
+      --g4-dim: rgba(52,211,153,0.08);
+
+      --g1-mid: rgba(245,158,11,0.18);
+      --g2-mid: rgba(34,211,238,0.18);
+      --g3-mid: rgba(244,63,94,0.18);
+      --g4-mid: rgba(52,211,153,0.18);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── SIDEBAR NAV ── */
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 220px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 32px 0;
+      z-index: 100;
+    }
+
+    .sidebar-logo {
+      padding: 0 24px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-logo .year {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-logo .role {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .nav-section {
+      padding: 24px 0;
+    }
+
+    .nav-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 24px;
+      margin-bottom: 8px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 24px;
+      cursor: pointer;
+      transition: background 0.15s;
+      text-decoration: none;
+      color: var(--muted2);
+      font-size: 13px;
+    }
+
+    .nav-item:hover { background: rgba(255,255,255,0.04); color: var(--text); }
+    .nav-item.active { color: var(--text); background: rgba(255,255,255,0.05); }
+
+    .nav-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .nav-item span { font-size: 12px; line-height: 1.3; }
+
+    .sidebar-priorities {
+      margin-top: auto;
+      padding: 16px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    .sidebar-priorities .nav-label { padding: 0; margin-bottom: 10px; }
+
+    .priority-tag {
+      display: inline-block;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 3px;
+      margin: 2px 2px 2px 0;
+    }
+
+    /* ── MAIN ── */
+    .main {
+      margin-left: 220px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 72px 64px 56px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(34,211,238,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .eyebrow-text {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .eyebrow-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: #fff;
+      max-width: 640px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, #22D3EE, #34D399);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-chip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 5px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--muted2);
+    }
+
+    /* ── GOALS CONTAINER ── */
+    .goals {
+      padding: 0 0 80px;
+    }
+
+    /* ── GOAL BLOCK ── */
+    .goal-block {
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .goal-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .goal-accent {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+    }
+
+    /* ── GOAL HEADER ── */
+    .goal-header {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 24px;
+      padding: 40px 64px 32px 72px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .goal-header:hover .goal-toggle { opacity: 1; }
+
+    .goal-number {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .goal-number-text { color: var(--muted); }
+
+    .goal-status {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      padding: 2px 8px;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .goal-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(18px, 2.2vw, 26px);
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .lens-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .lens-tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 3px;
+      border: 1px solid currentColor;
+      opacity: 0.6;
+    }
+
+    .goal-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      transition: opacity 0.2s, transform 0.3s, background 0.2s;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .goal-toggle svg {
+      transition: transform 0.3s;
+    }
+
+    .goal-block.open .goal-toggle { opacity: 1; background: rgba(255,255,255,0.06); }
+    .goal-block.open .goal-toggle svg { transform: rotate(180deg); }
+
+    /* ── GOAL BODY ── */
+    .goal-body {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s ease;
+    }
+
+    .goal-block.open .goal-body {
+      grid-template-rows: 1fr;
+    }
+
+    .goal-body-inner {
+      overflow: hidden;
+    }
+
+    .goal-content {
+      padding: 0 64px 48px 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    /* ── OUTCOME ── */
+    .outcome-block {
+      grid-column: 1 / -1;
+      padding: 20px 24px;
+      border-radius: 8px;
+      border-left: 3px solid currentColor;
+    }
+
+    .block-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      opacity: 0.5;
+    }
+
+    .outcome-text {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--muted2);
+      font-style: italic;
+    }
+
+    /* ── INITIATIVES ── */
+    .initiatives-col h3,
+    .dod-col h3 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .initiative-group {
+      margin-bottom: 22px;
+    }
+
+    .initiative-group-title {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .init-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .initiative-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .initiative-items li {
+      font-size: 13px;
+      color: var(--muted2);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .initiative-items li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 4px;
+      height: 1px;
+      background: var(--muted);
+    }
+
+    /* ── DOD ── */
+    .dod-block {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      height: fit-content;
+    }
+
+    .dod-items {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .dod-items li {
+      font-size: 13px;
+      color: var(--muted2);
+      display: flex;
+      gap: 10px;
+      line-height: 1.5;
+    }
+
+    .dod-check {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* ── COLORS PER GOAL ── */
+    .g1 .goal-accent { background: var(--g1); }
+    .g2 .goal-accent { background: var(--g2); }
+    .g3 .goal-accent { background: var(--g3); }
+    .g4 .goal-accent { background: var(--g4); }
+
+    .g1 .goal-number-text { color: var(--g1); }
+    .g2 .goal-number-text { color: var(--g2); }
+    .g3 .goal-number-text { color: var(--g3); }
+    .g4 .goal-number-text { color: var(--g4); }
+
+    .g1 .goal-status { background: var(--g1-dim); color: var(--g1); border: 1px solid rgba(245,158,11,0.2); }
+    .g2 .goal-status { background: var(--g2-dim); color: var(--g2); border: 1px solid rgba(34,211,238,0.2); }
+    .g3 .goal-status { background: var(--g3-dim); color: var(--g3); border: 1px solid rgba(244,63,94,0.2); }
+    .g4 .goal-status { background: var(--g4-dim); color: var(--g4); border: 1px solid rgba(52,211,153,0.2); }
+
+    .g1 .lens-tag { color: var(--g1); }
+    .g2 .lens-tag { color: var(--g2); }
+    .g3 .lens-tag { color: var(--g3); }
+    .g4 .lens-tag { color: var(--g4); }
+
+    .g1 .outcome-block { background: var(--g1-dim); color: var(--g1); border-color: var(--g1); }
+    .g2 .outcome-block { background: var(--g2-dim); color: var(--g2); border-color: var(--g2); }
+    .g3 .outcome-block { background: var(--g3-dim); color: var(--g3); border-color: var(--g3); }
+    .g4 .outcome-block { background: var(--g4-dim); color: var(--g4); border-color: var(--g4); }
+
+    .g1 .init-dot { background: var(--g1); }
+    .g2 .init-dot { background: var(--g2); }
+    .g3 .init-dot { background: var(--g3); }
+    .g4 .init-dot { background: var(--g4); }
+
+    .g1 .dod-check { border-color: rgba(245,158,11,0.3); }
+    .g2 .dod-check { border-color: rgba(34,211,238,0.3); }
+    .g3 .dod-check { border-color: rgba(244,63,94,0.3); }
+    .g4 .dod-check { border-color: rgba(52,211,153,0.3); }
+
+    /* Nav dot colours */
+    .nd1 { background: var(--g1); }
+    .nd2 { background: var(--g2); }
+    .nd3 { background: var(--g3); }
+    .nd4 { background: var(--g4); }
+
+    /* Priority tag colours */
+    .pt-ai { background: rgba(34,211,238,0.1); color: #22D3EE; border: 1px solid rgba(34,211,238,0.2); }
+    .pt-loyalty { background: rgba(245,158,11,0.1); color: #F59E0B; border: 1px solid rgba(245,158,11,0.2); }
+    .pt-geo { background: rgba(244,63,94,0.1); color: #F43F5E; border: 1px solid rgba(244,63,94,0.2); }
+    .pt-platform { background: rgba(52,211,153,0.1); color: #34D399; border: 1px solid rgba(52,211,153,0.2); }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { margin-left: 0; }
+      .hero { padding: 40px 24px 32px; }
+      .goal-header { padding: 28px 24px 20px 32px; }
+      .goal-content { padding: 0 24px 32px 32px; grid-template-columns: 1fr; }
+      .outcome-block { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="year">FY 2026</div>
+    <div class="role">Product Director<br>Enable Space</div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-label">Goals</div>
+    <a href="#g1" class="nav-item active">
+      <span class="nav-dot nd1"></span>
+      <span>Enable Operating Model</span>
+    </a>
+    <a href="#g2" class="nav-item">
+      <span class="nav-dot nd2"></span>
+      <span>AI-Native Ways of Working</span>
+    </a>
+    <a href="#g3" class="nav-item">
+      <span class="nav-dot nd3"></span>
+      <span>P0 Platform Health</span>
+    </a>
+    <a href="#g4" class="nav-item">
+      <span class="nav-dot nd4"></span>
+      <span>Building with AI</span>
+    </a>
+  </div>
+  <div class="sidebar-priorities">
+    <div class="nav-label">Business priorities</div>
+    <span class="priority-tag pt-ai">AI</span>
+    <span class="priority-tag pt-loyalty">Loyalty</span>
+    <span class="priority-tag pt-geo">Geo Growth</span>
+    <span class="priority-tag pt-platform">Platform</span>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-text">Juliana Araujo · Product Director · Enable</span>
+      <span class="eyebrow-divider"></span>
+      <span class="eyebrow-text">Level J</span>
+    </div>
+    <h1>Goals for<br><em>2026</em></h1>
+    <div class="hero-meta">
+      <span class="meta-chip">Production Platform</span>
+      <span class="meta-chip">DevEx</span>
+      <span class="meta-chip">Security</span>
+      <span class="meta-chip">Employee Enablement</span>
+    </div>
+  </header>
+
+  <!-- GOALS -->
+  <div class="goals">
+
+    <!-- ── GOAL 1 ── -->
+    <div class="goal-block g1" id="g1">
+      <div class="goal-accent"></div>
+      <div class="goal-header" onclick="toggleGoal(this)">
+        <div>
+          <div class="goal-number">
+            <span class="goal-number-text">Goal 01</span>
+            <span class="goal-status">Org design</span>
+          </div>
+          <div class="goal-title">Enable portfolio operating model reset — I lead my tribe leads to deliver the right outcomes for the right type of work</div>
+          <div class="lens-tags">
+            <span class="lens-tag">Team leadership</span>
+            <span class="lens-tag">Strategic trade-offs</span>
+            <span class="lens-tag">Exec alignment</span>
+          </div>
+        </div>
+        <div class="goal-toggle">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="goal-body">
+        <div class="goal-body-inner">
+          <div class="goal-content">
+            <div class="outcome-block">
+              <div class="block-label">Outcome</div>
+              <div class="outcome-text">I have led my tribe leads to operate with the right model for their type of work — making hard structural trade-offs, removing blockers, and creating the environment for timely delivery of the right business outcomes. Execs understand what Enable is accountable for, how to engage with it, and trust it as a dependable partner. Each tribe lead is performing against a clear mandate with the autonomy and support to succeed.</div>
+            </div>
+
+            <div class="initiatives-col">
+              <h3>Major initiatives</h3>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Make hard structural calls and get exec buy-in
+                </div>
+                <ul class="initiative-items">
+                  <li>Identify tribes where the current model is not fit for purpose and bring a clear structural recommendation — not just an observation — to exec level</li>
+                  <li>Make the hard trade-offs: what gets investment, what gets rationalised, what changes ownership; don't let ambiguity persist</li>
+                  <li>Secure exec endorsement of the new operating model so tribe leads have the authority and air cover to operate within it</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Lead tribe leads to operate with the right model
+                </div>
+                <ul class="initiative-items">
+                  <li>Set distinct expectations per tribe based on function type — product strategy and outcomes-based roadmaps where appropriate; service contracts and SLAs where not</li>
+                  <li>Actively remove blockers and work around constraints that prevent tribe leads from delivering — don't just identify them</li>
+                  <li>Invest in the growth of tribe leads: ensure they have the context, skills, and support to lead their teams to strategic results</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Create a dependable operating rhythm for the Enable space
+                </div>
+                <ul class="initiative-items">
+                  <li>Own the meta-backlog for Enable: the prioritised set of bets across tribes that reflects what matters most for Skyscanner right now</li>
+                  <li>Provide a cadence of clear, regular updates to execs and stakeholders — with honest signal on where we are ahead, on track, or at risk</li>
+                  <li>Manage cross-tribe dependencies proactively so they don't become emergencies</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="dod-col">
+              <h3>Definition of done</h3>
+              <div class="dod-block">
+                <ul class="dod-items">
+                  <li><span class="dod-check"></span>Structural decisions endorsed at exec level, not just documented</li>
+                  <li><span class="dod-check"></span>Each tribe lead has a clear mandate, appropriate operating model, and is performing against it</li>
+                  <li><span class="dod-check"></span>Enable meta-backlog owned, prioritised, and visible to execs on a regular cadence</li>
+                  <li><span class="dod-check"></span>Blockers and cross-tribe dependencies actively managed — not left to escalate</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GOAL 2 ── -->
+    <div class="goal-block g2" id="g2">
+      <div class="goal-accent"></div>
+      <div class="goal-header" onclick="toggleGoal(this)">
+        <div>
+          <div class="goal-number">
+            <span class="goal-number-text">Goal 02</span>
+            <span class="goal-status">AI practice</span>
+          </div>
+          <div class="goal-title">AI-native ways of working — I set the direction for how Skyscanner's product, engineering, and CX disciplines build together with AI</div>
+          <div class="lens-tags">
+            <span class="lens-tag">AI-powered growth</span>
+            <span class="lens-tag">Voice of the practitioner</span>
+            <span class="lens-tag">Company-wide practice</span>
+          </div>
+        </div>
+        <div class="goal-toggle">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="goal-body">
+        <div class="goal-body-inner">
+          <div class="goal-content">
+            <div class="outcome-block">
+              <div class="block-label">Outcome</div>
+              <div class="outcome-text">I have autonomously identified and led Skyscanner's response to an unmet, previously unaddressed need: how product, engineering, and CX actually work together when AI is in the loop. I have set the direction, used AI itself to accelerate discovery and insight generation, and created the conditions for this to become sustained company-wide practice — not a one-off initiative. Skyscanner is raising its bar on AI-native product development because of this work.</div>
+            </div>
+
+            <div class="initiatives-col">
+              <h3>Major initiatives</h3>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Lead discovery — and use AI to accelerate it
+                </div>
+                <ul class="initiative-items">
+                  <li>Autonomously design and lead discovery across product, engineering, and CX — surfacing how teams build with AI today, what's working, and what the biggest unaddressed gaps are</li>
+                  <li>Leverage AI for rapid synthesis, pattern identification, and insight generation from discovery — model the behaviour we're trying to build</li>
+                  <li>Bring findings and a clear point of view to execs and product leadership — not just data, but a recommended direction with trade-offs named</li>
+                  <li>Guard against bias and quality gaps in AI-assisted workflows: surface where AI is creating false confidence or eroding craft</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Set the direction for AI-native product development at Skyscanner
+                </div>
+                <ul class="initiative-items">
+                  <li>Define an ambitious, long-term point of view on what AI-native collaboration between product, engineering, and CX looks like — and what it demands of each discipline</li>
+                  <li>Turn that point of view into testable hypotheses and iterate quickly: pilots, experiments, documented outcomes</li>
+                  <li>Make hard calls about what good looks like and what we will stop accepting — this is direction-setting, not facilitation</li>
+                  <li>Represent Skyscanner's thinking on AI-native product development in external forums where relevant</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Create the infrastructure for sustained company-wide practice
+                </div>
+                <ul class="initiative-items">
+                  <li>Lead a cross-discipline community of practice — set its direction and ensure it has enough momentum to outlast any single initiative</li>
+                  <li>Build cross-pollination mechanisms that connect Loyalty, Geo Growth, and platform tribes so learnings travel at pace</li>
+                  <li>Measure adoption of new practices, not just satisfaction: are teams actually changing how they work, and is it producing better outcomes?</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="dod-col">
+              <h3>Definition of done</h3>
+              <div class="dod-block">
+                <ul class="dod-items">
+                  <li><span class="dod-check"></span>Discovery completed using AI-accelerated synthesis; exec-level point of view shared and acted on</li>
+                  <li><span class="dod-check"></span>A long-term direction for AI-native ways of working endorsed and adopted beyond a single team</li>
+                  <li><span class="dod-check"></span>Community of practice self-sustaining with clear signal of practice change — not just attendance</li>
+                  <li><span class="dod-check"></span>Measurable improvement in how teams across product, engineering, and CX collaborate with AI in the loop</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GOAL 3 ── -->
+    <div class="goal-block g3" id="g3">
+      <div class="goal-accent"></div>
+      <div class="goal-header" onclick="toggleGoal(this)">
+        <div>
+          <div class="goal-number">
+            <span class="goal-number-text">Goal 03</span>
+            <span class="goal-status">Risk &amp; alignment</span>
+          </div>
+          <div class="goal-title">P0 platform health — I lead the capability functions to resolve Skyscanner's highest-risk shared infrastructure gaps</div>
+          <div class="lens-tags">
+            <span class="lens-tag">Cross-org strategy</span>
+            <span class="lens-tag">Exec escalation</span>
+            <span class="lens-tag">Hard trade-offs</span>
+          </div>
+        </div>
+        <div class="goal-toggle">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="goal-body">
+        <div class="goal-body-inner">
+          <div class="goal-content">
+            <div class="outcome-block">
+              <div class="block-label">Outcome</div>
+              <div class="outcome-text">I have proactively identified and led Skyscanner's response to platform health risks that no single capability function could resolve alone. By leading across Enable, Shared Products, and Data — making hard prioritisation calls, escalating to execs where needed, and refusing to let P0s die in planning cycles — I have moved the most critical gaps from known risks to funded, in-flight initiatives with clear owners and measurable progress.</div>
+            </div>
+
+            <div class="initiatives-col">
+              <h3>Major initiatives</h3>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Autonomously lead the P0 assessment — don't wait to be asked
+                </div>
+                <ul class="initiative-items">
+                  <li>Proactively convene Enable, Shared Products, and Data to surface the highest-risk gaps: disaster recovery, data sovereignty, security posture, AI-scale infrastructure resilience</li>
+                  <li>Apply a rigorous prioritisation framework — likelihood, blast radius, regulatory exposure, dependency on AI and Loyalty and Geo Growth bets — and own the resulting list</li>
+                  <li>Bring a clear recommended P0 list to exec level with the business risk case, not just the technical one</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Make the hard calls on ownership, investment, and trade-offs
+                </div>
+                <ul class="initiative-items">
+                  <li>Assign unambiguous ownership for each P0 — including cases where it's uncomfortable or crosses org boundaries</li>
+                  <li>Name the investment gaps directly to exec leadership; don't softened the message — P0s that are under-resourced are a business risk, not just a planning problem</li>
+                  <li>Make explicit trade-offs: which platform health work displaces which feature work, and why that's the right call</li>
+                  <li>Remove organisational blockers that prevent progress — escalate, negotiate, and work around constraints rather than waiting for them to resolve</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Establish ongoing cross-capability accountability
+                </div>
+                <ul class="initiative-items">
+                  <li>Create a governance rhythm that keeps P0s visible and accountable — not a committee, but a decision-making forum with teeth</li>
+                  <li>Ensure execs receive regular, honest updates on platform health status and risk — in business terms, not engineering terms</li>
+                  <li>Build this into each function's operating model so platform health is never again a list of known risks with no owner</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="dod-col">
+              <h3>Definition of done</h3>
+              <div class="dod-block">
+                <ul class="dod-items">
+                  <li><span class="dod-check"></span>P0 list endorsed at exec level with business risk framing — not just shared between function leads</li>
+                  <li><span class="dod-check"></span>Every P0 has a funded delivery plan, unambiguous owner, and is in-flight — none are still on a list</li>
+                  <li><span class="dod-check"></span>Trade-offs between platform health and feature investment made explicitly and visibly, not avoided</li>
+                  <li><span class="dod-check"></span>Cross-capability governance rhythm running and producing decisions, not just updates</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── GOAL 4 ── -->
+    <div class="goal-block g4" id="g4">
+      <div class="goal-accent"></div>
+      <div class="goal-header" onclick="toggleGoal(this)">
+        <div>
+          <div class="goal-number">
+            <span class="goal-number-text">Goal 04</span>
+            <span class="goal-status">AI velocity</span>
+          </div>
+          <div class="goal-title">Building with AI — I set the long-term vision and lead this cross-functional workstream to measurably faster, safer, AI-native development</div>
+          <div class="lens-tags">
+            <span class="lens-tag">AI-powered growth</span>
+            <span class="lens-tag">Product strategy</span>
+            <span class="lens-tag">Workstream leadership</span>
+          </div>
+        </div>
+        <div class="goal-toggle">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M3 5L7 9L11 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="goal-body">
+        <div class="goal-body-inner">
+          <div class="goal-content">
+            <div class="outcome-block">
+              <div class="block-label">Outcome</div>
+              <div class="outcome-text">I have set an ambitious, long-term strategy for how Skyscanner engineers build with AI — and led this cross-functional workstream to deliver against it. I own the meta-backlog for Building with AI, make the hard prioritisation calls between competing capabilities, and hold the bar on quality, governance, and bias prevention. The North Star of engineering time saved is no longer aspirational: it is measured, improving, and credible to exec leadership.</div>
+            </div>
+
+            <div class="initiatives-col">
+              <h3>Major initiatives</h3>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Set the long-term strategy and own the meta-backlog
+                </div>
+                <ul class="initiative-items">
+                  <li>Define an ambitious multi-horizon strategy across AI platform capabilities: LLM engineering, ModelOps, agentic platform, AI-ready knowledge, and security guardrails</li>
+                  <li>Own the meta-backlog: make the hard trade-offs between competing capabilities and communicate those decisions clearly to the tribe and to execs</li>
+                  <li>Define business success in measurable terms — engineering time saved, AI Coverage Rate, Time to Self-Serve — and hold the tribe accountable to them</li>
+                  <li>Partner with engineering leadership so the strategy is co-owned and funded, not just endorsed in principle</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Lead the workstream to measurable, fast-learning delivery
+                </div>
+                <ul class="initiative-items">
+                  <li>Create the conditions for fast iteration: POCs, MVPs, and rapid feedback loops that validate hypotheses before scaling investment</li>
+                  <li>Remove blockers and manage dependencies that slow the workstream — don't wait for engineers to escalate</li>
+                  <li>Inspire workstream contributors to strategic results: set high expectations, celebrate learning from failure, and hold the bar on quality</li>
+                  <li>Ensure the golden path is real: opinionated, well-supported, and actually used — not a reference architecture that nobody follows</li>
+                </ul>
+              </div>
+
+              <div class="initiative-group">
+                <div class="initiative-group-title">
+                  <span class="init-dot"></span>
+                  Guard against bias, quality gaps, and ungoverned AI
+                </div>
+                <ul class="initiative-items">
+                  <li>Close the governance gap that exists in the current KPI framework — define what governed AI use looks like, measure it, and make it a first-class concern</li>
+                  <li>Proactively identify where AI tooling is creating quality gaps, bias, or false confidence in engineering workflows — and act before they become incidents</li>
+                  <li>Ensure cost guardrails (cost per 1K LLM sessions, token usage, platform reliability) are monitored and enforced as adoption scales</li>
+                  <li>Build governance into the golden path from the start — not as a compliance gate bolted on after</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="dod-col">
+              <h3>Definition of done</h3>
+              <div class="dod-block">
+                <ul class="dod-items">
+                  <li><span class="dod-check"></span>Multi-horizon strategy set and endorsed by exec leadership — not just shared</li>
+                  <li><span class="dod-check"></span>Meta-backlog owned with hard trade-offs documented and visible</li>
+                  <li><span class="dod-check"></span>Engineering time saved baseline established; leading indicators tracked monthly and improving</li>
+                  <li><span class="dod-check"></span>Governance KPI defined, instrumented, and reported to AI LT at QBR</li>
+                  <li><span class="dod-check"></span>Workstream delivering at pace against strategy — not just building; learning and iterating quickly</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /goals -->
+</main>
+
+<script>
+  function toggleGoal(header) {
+    const block = header.closest('.goal-block');
+    block.classList.toggle('open');
+  }
+
+  // Intersection observer for fade-in
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.goal-block').forEach(el => observer.observe(el));
+
+  // Highlight active nav item on scroll
+  const navItems = document.querySelectorAll('.nav-item[href^="#"]');
+  const goalBlocks = document.querySelectorAll('.goal-block[id]');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    goalBlocks.forEach(block => {
+      if (window.scrollY >= block.offsetTop - 120) current = block.id;
+    });
+    navItems.forEach(item => {
+      item.classList.toggle('active', item.getAttribute('href') === `#${current}`);
+    });
+  }, { passive: true });
+
+  // Open first goal by default
+  document.querySelector('.goal-block').classList.add('open');
+</script>
+</body>
+</html>
